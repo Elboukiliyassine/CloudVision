@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Analyse Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #AFEEEE;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Emotion analyse Result</h1>
+
+        <h2>Prediction Results:</h2>
+        {% if predictions %}
+            <ul>
+            
+                <li>{{ predictions.predictions[0].tagName }}: {{ predictions.predictions[0].probability * 100 }}%</li>
+                <li>{{ predictions.predictions[1].tagName }}: {{ predictions.predictions[1].probability * 100 }}%</li>
+    
+            </ul>
+        {% else %}
+            <p>No predictions available.</p>
+        {% endif %}
+
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>
